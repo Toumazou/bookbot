@@ -1,15 +1,20 @@
+import sys
 from stats import get_book_wordcount
 from stats import get_book_charcount
 from stats import sort_dictionary
+
+if len(sys.argv) <2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
 def get_book_text(filepath):
     with open(filepath) as f:
         file_contents = f.read()
     return file_contents
 
-word_count = get_book_wordcount("/home/toum/workspace/github.com/Toumazou/bookbot/books/frankenstein.txt")
+word_count = get_book_wordcount(sys.argv[1])
 
-ch_dic = get_book_charcount("/home/toum/workspace/github.com/Toumazou/bookbot/books/frankenstein.txt")
+ch_dic = get_book_charcount(sys.argv[1])
 
 ch_dic_sorted = sort_dictionary(ch_dic)
 
