@@ -1,5 +1,6 @@
 from stats import get_book_wordcount
 from stats import get_book_charcount
+from stats import sort_dictionary
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -8,9 +9,12 @@ def get_book_text(filepath):
 
 word_count = get_book_wordcount("/home/toum/workspace/github.com/Toumazou/bookbot/books/frankenstein.txt")
 
-print(f"{word_count} words found in the document")
+ch_dic = get_book_charcount("/home/toum/workspace/github.com/Toumazou/bookbot/books/frankenstein.txt")
 
-char_dictionary = get_book_charcount("/home/toum/workspace/github.com/Toumazou/bookbot/books/frankenstein.txt")
+ch_dic_sorted = sort_dictionary(ch_dic)
 
-for key in char_dictionary: 
-    print(f"'{key}': {char_dictionary[key]}")
+print("============ BOOKBOT ============\nAnalyzing book found at books/frankenstein.txt...\n----------- Word Count ----------")
+print(f"Found {word_count} total words\n--------- Character Count -------")
+for key in ch_dic_sorted: 
+    print(f"{key}: {ch_dic_sorted[key]}")
+print("============= END ===============")

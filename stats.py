@@ -47,6 +47,16 @@ def get_book_charcount(filepath):
 
 dictionary = get_book_charcount("/home/toum/workspace/github.com/Toumazou/bookbot/books/frankenstein.txt")
 
-for key in dictionary:
-    print(f"{key}: {dictionary[key]}")
+# for key in dictionary:
+    # print(f"{key}: {dictionary[key]}")
+    
+def sort_dictionary(dictionary):
+    list = []
+    sorted_dic = {}
+    for key in dictionary:
+        list.append({"char": key, "num": dictionary[key]})
+    list.sort(key=lambda item: item["num"], reverse=True)
+    sorted_dic = {item["char"]: item["num"] for item in list}
+    return sorted_dic
 
+# print(sort_dictionary(dictionary))
